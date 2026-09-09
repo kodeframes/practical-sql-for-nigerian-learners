@@ -152,7 +152,7 @@ PostgreSQL 18.x is the executable reference platform. SQLite, MySQL 8.4 LTS, and
 Different repository materials have different rights boundaries:
 
 - **software and repository code:** MIT License — see [`LICENSE`](LICENSE);
-- **synthetic dataset:** intended separate permissive data licence, pending final confirmation — see [`DATA-LICENSE.md`](DATA-LICENSE.md);
+- **synthetic dataset:** Creative Commons Attribution 4.0 International (CC BY 4.0) — see [`DATA-LICENSE.md`](DATA-LICENSE.md);
 - **book prose, substantial editorial content, diagrams, cover material and branding:** not granted by the MIT software licence — see [`CONTENT-LICENSE.md`](CONTENT-LICENSE.md).
 
 Do not infer rights for one category from a licence that applies to another.
