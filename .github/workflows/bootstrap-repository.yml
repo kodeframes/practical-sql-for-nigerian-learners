@@ -28,16 +28,16 @@ jobs:
           : > /tmp/repository.tar.gz.b64
           for id in \
             5604224489 \
+            5604356268 \
             5604255718 \
             5604289003 \
             5604322587 \
-            5604356268 \
-            5604361650 \
             5604383904 \
             5604392949 \
             5604401612 \
             5604410151 \
-            5604419333
+            5604419333 \
+            5604361650
           do
             gh api "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" --jq '.body' >> /tmp/repository.tar.gz.b64
           done
