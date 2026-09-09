@@ -159,7 +159,7 @@ Do not infer rights for one category from a licence that applies to another.
 
 ## Book/repository edition alignment
 
-See [`BOOK-EDITION.md`](BOOK-EDITION.md). When the published book edition is frozen, that file should record the corresponding repository tag/commit so readers can reproduce the examples for their edition.
+The first publication-aligned executable baseline is frozen at commit `838474a415502909c326af5f27b02ed83bee9f2d`. The corresponding reference branch is `release/book-v1.0.0-sql-baseline`. See [`BOOK-EDITION.md`](BOOK-EDITION.md) for the book/subtitle mapping, PostgreSQL 18.6 verification record, and publication targets.
 
 ## Quality policy
 
