@@ -1,0 +1,13 @@
+product_id,category_id,sku,product_name,unit_price,reorder_level,is_active
+1,1,GRC-RICE-05,Rice 5kg Bag,8500,20,1
+2,1,GRC-OIL-02,Vegetable Oil 2L,4200,15,1
+3,1,GRC-SUG-01,Refined Sugar 1kg,950,25,1
+4,2,OFF-CHR-01,Office Chair,35000,5,1
+5,2,OFF-PPR-A4,A4 Paper Ream,7800,20,1
+6,3,ELC-BLB-09,LED Bulb 9W,1200,30,1
+7,3,ELC-EXT-04,Extension Socket 4-Way,3100,12,1
+8,4,HOU-DET-05,Laundry Detergent 5kg,6900,10,1
+9,4,HOU-BKT-20,Plastic Bucket 20L,2800,15,1
+10,2,OFF-USB-64,USB Flash Drive 64GB,4500,8,1
+11,3,ELC-FAN-16,Standing Fan 16in,24500,6,1
+12,4,HOU-OLD-01,Legacy Storage Box,5400,3,0

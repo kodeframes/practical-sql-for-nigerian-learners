@@ -1,0 +1,7 @@
+branch_id,branch_code,branch_name,city,state,opened_date,is_active
+1,LOS-IKE,Ikeja Branch,Lagos,Lagos,2018-03-01,1
+2,ABJ-WUS,Wuse Branch,Abuja,FCT,2019-07-15,1
+3,IBA-DUG,Dugbe Branch,Ibadan,Oyo,2020-01-20,1
+4,ENU-NKW,New Haven Branch,Enugu,Enugu,2021-11-04,1
+5,KAN-CEN,Kano Central,Kano,Kano,2022-05-10,1
+6,PHC-GRA,Port Harcourt GRA,Port Harcourt,Rivers,2023-02-14,1

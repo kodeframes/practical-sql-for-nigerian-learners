@@ -1,0 +1,132 @@
+erDiagram
+    branches ||--o{ employees : employs
+    branches ||--o{ orders : records
+    branches ||--o{ inventory_movements : tracks
+    customers o|--o{ orders : places
+    employees ||--o{ orders : handles
+    categories ||--o{ products : classifies
+    suppliers ||--o{ supplier_products : offers
+    products ||--o{ supplier_products : sourced_by
+    orders ||--|{ order_items : contains
+    products ||--o{ order_items : sold_as
+    orders ||--o{ payments : receives
+    orders ||--o| deliveries : may_have
+    products ||--o{ inventory_movements : moved_as
+    order_items ||--o{ returns : may_generate
+
+    branches {
+        integer branch_id PK
+        text branch_code UK
+        text branch_name
+        text city
+        text state
+        date opened_date
+        boolean is_active
+    }
+    employees {
+        integer employee_id PK
+        integer branch_id FK
+        text first_name
+        text last_name
+        text job_title
+        date hire_date
+        text email
+        boolean is_active
+    }
+    customers {
+        integer customer_id PK
+        text customer_name
+        text customer_type
+        text city
+        text state
+        text phone
+        text email
+        timestamptz created_at
+        boolean is_active
+    }
+    suppliers {
+        integer supplier_id PK
+        text supplier_name
+        text city
+        text state
+        text phone
+        text email
+        boolean is_active
+    }
+    categories {
+        integer category_id PK
+        text category_name UK
+    }
+    products {
+        integer product_id PK
+        integer category_id FK
+        text sku UK
+        text product_name
+        numeric unit_price
+        integer reorder_level
+        boolean is_active
+    }
+    supplier_products {
+        integer supplier_id PK,FK
+        integer product_id PK,FK
+        numeric supplier_unit_cost
+        integer lead_time_days
+        boolean is_preferred
+    }
+    orders {
+        integer order_id PK
+        text order_number UK
+        integer branch_id FK
+        integer customer_id FK
+        integer employee_id FK
+        date order_date
+        text sales_channel
+        text order_status
+        numeric discount_amount
+        text notes
+    }
+    order_items {
+        integer order_item_id PK
+        integer order_id FK
+        integer product_id FK
+        integer quantity
+        numeric unit_price
+        numeric discount_amount
+    }
+    payments {
+        integer payment_id PK
+        integer order_id FK
+        timestamptz payment_date
+        numeric amount
+        text payment_method
+        text payment_status
+        text reference_code
+    }
+    inventory_movements {
+        integer movement_id PK
+        integer branch_id FK
+        integer product_id FK
+        text movement_type
+        integer quantity_change
+        timestamptz movement_date
+        text notes
+    }
+    deliveries {
+        integer delivery_id PK
+        integer order_id FK,UK
+        date dispatch_date
+        timestamptz delivered_at
+        text delivery_status
+        text delivery_city
+        text delivery_state
+        numeric delivery_fee
+    }
+    returns {
+        integer return_id PK
+        integer order_item_id FK
+        date return_date
+        integer quantity
+        text reason
+        text return_status
+        numeric refund_amount
+    }

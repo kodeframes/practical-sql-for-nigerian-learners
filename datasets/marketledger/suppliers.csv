@@ -1,0 +1,5 @@
+supplier_id,supplier_name,city,state,phone,email,is_active
+1,Savannah Foods Supply,Kano,Kano,,orders@savannah.invalid,1
+2,Atlantic Office Products,Lagos,Lagos,08000000102,sales@atlantic.invalid,1
+3,Eastern Home Goods,Enugu,Enugu,,,1
+4,Delta Electricals,Port Harcourt,Rivers,08000000104,trade@delta.invalid,1

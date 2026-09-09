@@ -1,0 +1,89 @@
+name: PostgreSQL 18 verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Initialise verification evidence
+        run: |
+          mkdir -p artifacts
+          {
+            echo "repository_commit=${GITHUB_SHA}"
+            echo "verification_started_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "container_image=postgres:18.6"
+          } > artifacts/postgresql18-verification.txt
+
+      - name: Start PostgreSQL 18.6
+        run: |
+          docker run -d --name marketledger-pg18 \
+            -e POSTGRES_DB=marketledger \
+            -e POSTGRES_USER=postgres \
+            -e POSTGRES_PASSWORD=postgres \
+            -p 5432:5432 \
+            postgres:18.6
+          for i in $(seq 1 60); do
+            if docker exec marketledger-pg18 pg_isready -U postgres -d marketledger; then
+              exit 0
+            fi
+            sleep 1
+          done
+          exit 1
+
+      - name: Verify exact PostgreSQL major
+        run: |
+          version="$(docker exec marketledger-pg18 psql -X -U postgres -d marketledger -Atqc 'SHOW server_version;')"
+          version_num="$(docker exec marketledger-pg18 psql -X -U postgres -d marketledger -Atqc "SHOW server_version_num;")"
+          echo "server_version=${version}" | tee -a artifacts/postgresql18-verification.txt
+          echo "server_version_num=${version_num}" | tee -a artifacts/postgresql18-verification.txt
+          test "$(docker exec marketledger-pg18 psql -X -U postgres -d marketledger -Atqc "SELECT current_setting('server_version_num')::int / 10000;")" = "18"
+
+      - name: Reset, build and seed
+        run: |
+          docker exec -i marketledger-pg18 psql -X -U postgres -d marketledger -v ON_ERROR_STOP=1 < database/postgresql/reset/001_reset.sql
+          docker exec -i marketledger-pg18 psql -X -U postgres -d marketledger -v ON_ERROR_STOP=1 < database/postgresql/schema/001_marketledger_schema.sql
+          docker exec -i marketledger-pg18 psql -X -U postgres -d marketledger -v ON_ERROR_STOP=1 < database/postgresql/seed/001_marketledger_seed.sql
+
+      - name: Integrity tests
+        run: docker exec -i marketledger-pg18 psql -X -U postgres -d marketledger -v ON_ERROR_STOP=1 < tests/integrity/001_integrity_checks.sql
+
+      - name: Regression tests
+        run: |
+          set -e
+          for f in tests/regression/*.sql; do
+            echo "==> $f"
+            docker exec -i marketledger-pg18 psql -X -U postgres -d marketledger -v ON_ERROR_STOP=1 < "$f"
+          done
+
+      - name: Canonical chapter scripts
+        run: |
+          set -e
+          for f in chapters/ch*.sql; do
+            echo "==> $f"
+            docker exec -i marketledger-pg18 psql -X -U postgres -d marketledger -v ON_ERROR_STOP=1 < "$f" >/dev/null
+          done
+
+      - name: Final dataset invariant
+        run: |
+          test "$(docker exec marketledger-pg18 psql -X -U postgres -d marketledger -Atqc 'SELECT COUNT(*) FROM orders;')" = "12"
+          {
+            echo "schema_seed_integrity_regression_chapters=PASS"
+            echo "final_order_count=12"
+            echo "verification_finished_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } >> artifacts/postgresql18-verification.txt
+
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: postgresql18-verification
+          path: artifacts/postgresql18-verification.txt

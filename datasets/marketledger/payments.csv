@@ -1,0 +1,14 @@
+payment_id,order_id,payment_date,amount,payment_method,payment_status,reference_code
+1,1,2026-01-05 12:10+01,15000,transfer,successful,TRX-0001
+2,1,2026-01-05 12:12+01,4800,card,successful,CARD-0001
+3,2,2026-01-06 16:00+01,7900,cash,successful,
+4,3,2026-01-08 10:05+01,50000,transfer,successful,TRX-0003
+5,3,2026-01-08 10:02+01,1200,card,failed,CARD-FAIL-1
+6,4,2026-01-13 09:00+01,96000,transfer,successful,TRX-0004
+7,6,2026-01-18 13:00+01,48750,transfer,successful,TRX-0006
+8,7,2026-02-02 14:00+01,24500,card,pending,CARD-PEND-1
+9,8,2026-02-05 12:30+01,15000,pos,successful,POS-0008
+10,9,2026-02-11 09:30+01,280000,transfer,successful,TRX-0009
+11,10,2026-02-14 11:00+01,12950,cash,successful,
+12,11,2026-03-01 17:00+01,25700,transfer,successful,TRX-0011
+13,12,2026-03-03 15:00+01,57700,pos,successful,POS-0012

@@ -1,0 +1,304 @@
+chapter,block_in_chapter,markdown_start_line,section,first_nonblank_line,pedagogical_role,canonical_runtime_companion
+2,1,336,Starting with `psql`,SELECT version();,setup-or-environment,chapters/ch02.sql
+2,2,359,Creating the learning database,CREATE DATABASE marketledger;,setup-or-environment,chapters/ch02.sql
+2,3,408,Loading the schema and seed data,SELECT COUNT(*) AS branch_count,worked-or-practice-sql,chapters/ch02.sql
+2,4,478,Hands-on Lab: build an offline-ready PostgreSQL practice folder,"SELECT current_database(), current_user;",setup-or-environment,chapters/ch02.sql
+4,1,776,The basic shape,SELECT column_name,worked-or-practice-sql,chapters/ch04.sql
+4,2,783,The basic shape,SELECT branch_name,worked-or-practice-sql,chapters/ch04.sql
+4,3,792,The basic shape,"SELECT branch_code, branch_name, city, state",worked-or-practice-sql,chapters/ch04.sql
+4,4,803,Explicit columns versus SELECT *,SELECT *,worked-or-practice-sql,chapters/ch04.sql
+4,5,816,Aliases,SELECT,worked-or-practice-sql,chapters/ch04.sql
+4,6,826,Aliases,SELECT,worked-or-practice-sql,chapters/ch04.sql
+4,7,840,Literal expressions,SELECT 2 + 3 AS result;,worked-or-practice-sql,chapters/ch04.sql
+4,8,846,Literal expressions,SELECT 'MarketLedger' AS project_name;,worked-or-practice-sql,chapters/ch04.sql
+4,9,858,Row order is not guaranteed,SELECT branch_name,worked-or-practice-sql,chapters/ch04.sql
+4,10,867,Worked Example: a product catalogue slice,SELECT,worked-or-practice-sql,chapters/ch04.sql
+4,11,893,Worked Example: a product catalogue slice,SELECT COUNT(*) AS product_count,worked-or-practice-sql,chapters/ch04.sql
+4,12,904,Hands-on Lab: build and verify a small projection,SELECT,worked-or-practice-sql,chapters/ch04.sql
+4,13,915,Hands-on Lab: build and verify a small projection,SELECT COUNT(*) AS branch_count,worked-or-practice-sql,chapters/ch04.sql
+4,14,922,Hands-on Lab: build and verify a small projection,SELECT,worked-or-practice-sql,chapters/ch04.sql
+4,15,966,Explained Solutions,"SELECT customer_id, customer_name, customer_type, city",worked-or-practice-sql,chapters/ch04.sql
+4,16,973,Explained Solutions,"SELECT supplier_id, supplier_name, state",worked-or-practice-sql,chapters/ch04.sql
+4,17,980,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch04.sql
+5,1,1028,WHERE narrows a row source,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch05.sql
+5,2,1035,WHERE narrows a row source,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch05.sql
+5,3,1060,Combining conditions with AND,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch05.sql
+5,4,1072,Combining conditions with AND,WHERE is_active,syntax-fragment,chapters/ch05.sql
+5,5,1082,OR means alternatives,"SELECT customer_id, customer_name, state",worked-or-practice-sql,chapters/ch05.sql
+5,6,1093,OR means alternatives,"SELECT customer_id, customer_name, state",worked-or-practice-sql,chapters/ch05.sql
+5,7,1103,Operator precedence and parentheses,WHERE customer_type = 'business',syntax-fragment,chapters/ch05.sql
+5,8,1125,Operator precedence and parentheses,"SELECT customer_id, customer_name, customer_type, state",worked-or-practice-sql,chapters/ch05.sql
+5,9,1138,NOT and negative conditions,"SELECT order_number, order_date, order_status",worked-or-practice-sql,chapters/ch05.sql
+5,10,1146,NOT and negative conditions,"SELECT customer_id, customer_name, state",worked-or-practice-sql,chapters/ch05.sql
+5,11,1158,BETWEEN for inclusive ranges,"SELECT product_name, unit_price",worked-or-practice-sql,chapters/ch05.sql
+5,12,1166,BETWEEN for inclusive ranges,WHERE unit_price >= 3000,syntax-fragment,chapters/ch05.sql
+5,13,1173,BETWEEN for inclusive ranges,"SELECT order_number, order_date, order_status",worked-or-practice-sql,chapters/ch05.sql
+5,14,1190,Pattern matching with LIKE,"SELECT product_id, product_name",worked-or-practice-sql,chapters/ch05.sql
+5,15,1198,Pattern matching with LIKE,"SELECT product_id, product_name",worked-or-practice-sql,chapters/ch05.sql
+5,16,1210,NULL-aware filtering,"SELECT customer_id, customer_name, email",worked-or-practice-sql,chapters/ch05.sql
+5,17,1218,NULL-aware filtering,"SELECT customer_id, customer_name, email",worked-or-practice-sql,chapters/ch05.sql
+5,18,1226,NULL-aware filtering,WHERE email = NULL,deliberately-incorrect-or-warning,chapters/ch05.sql
+5,19,1236,Worked Example: completed Q1 business orders,SELECT,worked-or-practice-sql,chapters/ch05.sql
+5,20,1265,Worked Example: completed Q1 business orders,SELECT COUNT(*),worked-or-practice-sql,chapters/ch05.sql
+5,21,1271,Worked Example: completed Q1 business orders,SELECT COUNT(*),worked-or-practice-sql,chapters/ch05.sql
+5,22,1279,Worked Example: completed Q1 business orders,SELECT COUNT(*),worked-or-practice-sql,chapters/ch05.sql
+5,23,1300,Hands-on Lab: prove that Boolean grouping changes meaning,"SELECT order_number, sales_channel, order_status",worked-or-practice-sql,chapters/ch05.sql
+5,24,1309,Hands-on Lab: prove that Boolean grouping changes meaning,"SELECT order_number, sales_channel, order_status",worked-or-practice-sql,chapters/ch05.sql
+5,25,1354,Explained Solutions,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch05.sql
+5,26,1361,Explained Solutions,"SELECT order_number, order_status",worked-or-practice-sql,chapters/ch05.sql
+5,27,1367,Explained Solutions,"SELECT customer_id, customer_name",worked-or-practice-sql,chapters/ch05.sql
+5,28,1375,Explained Solutions,"SELECT customer_id, customer_name, state",worked-or-practice-sql,chapters/ch05.sql
+6,1,1423,ORDER BY makes order explicit,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch06.sql
+6,2,1433,ORDER BY makes order explicit,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch06.sql
+6,3,1445,Sorting by several expressions,"SELECT customer_id, customer_name, state, created_at",worked-or-practice-sql,chapters/ch06.sql
+6,4,1457,ORDER BY can use output aliases,SELECT,worked-or-practice-sql,chapters/ch06.sql
+6,5,1471,LIMIT controls the number of returned rows,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch06.sql
+6,6,1482,LIMIT controls the number of returned rows,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch06.sql
+6,7,1492,OFFSET skips rows,"SELECT customer_id, customer_name, created_at",worked-or-practice-sql,chapters/ch06.sql
+6,8,1508,DISTINCT removes duplicate result rows,SELECT state,worked-or-practice-sql,chapters/ch06.sql
+6,9,1516,DISTINCT removes duplicate result rows,SELECT DISTINCT state,worked-or-practice-sql,chapters/ch06.sql
+6,10,1525,DISTINCT removes duplicate result rows,"SELECT DISTINCT state, customer_type",worked-or-practice-sql,chapters/ch06.sql
+6,11,1544,Worked Example: latest customer accounts,SELECT,worked-or-practice-sql,chapters/ch06.sql
+6,12,1571,Worked Example: latest customer accounts,"SELECT customer_id, customer_name, created_at",worked-or-practice-sql,chapters/ch06.sql
+6,13,1584,Hands-on Lab: make a top-N result reproducible,SELECT,worked-or-practice-sql,chapters/ch06.sql
+6,14,1599,Hands-on Lab: make a top-N result reproducible,SELECT DISTINCT city,worked-or-practice-sql,chapters/ch06.sql
+6,15,1642,Explained Solutions,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch06.sql
+6,16,1651,Explained Solutions,"SELECT branch_id, branch_name, opened_date",worked-or-practice-sql,chapters/ch06.sql
+6,17,1661,Explained Solutions,SELECT DISTINCT state,worked-or-practice-sql,chapters/ch06.sql
+7,1,1708,Arithmetic expressions,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,2,1718,Arithmetic expressions,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,3,1731,Arithmetic expressions,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,4,1744,Boolean expressions can be selected,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,5,1758,CASE creates conditional output,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,6,1779,"NULL is absence, not a special ordinary value","SELECT customer_id, customer_name",deliberately-incorrect-or-warning,chapters/ch07.sql
+7,7,1787,"NULL is absence, not a special ordinary value","SELECT customer_id, customer_name",worked-or-practice-sql,chapters/ch07.sql
+7,8,1807,Three-valued logic,WHERE NOT (email = 'a@example.test'),syntax-fragment,chapters/ch07.sql
+7,9,1813,Three-valued logic,WHERE email <> 'a@example.test',syntax-fragment,chapters/ch07.sql
+7,10,1822,NULL in arithmetic,SELECT 100 + NULL;,worked-or-practice-sql,chapters/ch07.sql
+7,11,1834,COALESCE chooses the first non-NULL value,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,12,1849,Worked Example: readable delivery status,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,13,1881,Worked Example: readable delivery status,"SELECT delivery_id, delivery_status, delivered_at",worked-or-practice-sql,chapters/ch07.sql
+7,14,1894,Hands-on Lab: classify without destroying NULL meaning,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,15,1912,Hands-on Lab: classify without destroying NULL meaning,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,16,1955,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,17,1965,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch07.sql
+7,18,1974,Explained Solutions,"SELECT customer_name, COALESCE(phone, '[no phone recorded]') AS phone_display",worked-or-practice-sql,chapters/ch07.sql
+7,19,1981,Explained Solutions,WHERE phone <> '08000000001',syntax-fragment,chapters/ch07.sql
+8,1,2025,Text functions,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,2,2040,Numeric functions,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,3,2056,Date arithmetic,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,4,2072,Date arithmetic,"SELECT order_number, order_date",worked-or-practice-sql,chapters/ch08.sql
+8,5,2084,Extracting date parts,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,6,2105,Truncating to reporting periods,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,7,2127,Worked Example: monthly order counts,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,8,2156,Worked Example: monthly order counts,SELECT COUNT(*),worked-or-practice-sql,chapters/ch08.sql
+8,9,2171,Hands-on Lab: separate date semantics from formatting,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,10,2222,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch08.sql
+8,11,2234,Explained Solutions,"SELECT order_number, order_date",worked-or-practice-sql,chapters/ch08.sql
+8,12,2247,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch08.sql
+9,1,2294,COUNT and SUM,SELECT COUNT(*) AS order_count,worked-or-practice-sql,chapters/ch09.sql
+9,2,2301,COUNT and SUM,SELECT SUM(quantity) AS units_across_all_line_items,worked-or-practice-sql,chapters/ch09.sql
+9,3,2312,AVG / MIN / MAX,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,4,2324,COUNT(column) differs from COUNT(*),SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,5,2337,GROUP BY changes the output grain,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,6,2350,HAVING filters groups,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,7,2365,HAVING filters groups,WHERE COUNT(*) >= 2,deliberately-incorrect-or-warning,chapters/ch09.sql
+9,8,2389,Worked Example: single-table payment summary,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,9,2421,Worked Example: single-table payment summary,SELECT SUM(amount) AS successful_amount,worked-or-practice-sql,chapters/ch09.sql
+9,10,2429,Hands-on Lab: reconcile grouped totals to the source table,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,11,2440,Hands-on Lab: reconcile grouped totals to the source table,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,12,2450,Hands-on Lab: reconcile grouped totals to the source table,SELECT SUM(amount) AS attempted_total,worked-or-practice-sql,chapters/ch09.sql
+9,13,2493,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,14,2503,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch09.sql
+9,15,2514,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch09.sql
+10,1,2558,Primary keys,"SELECT order_id, order_number",worked-or-practice-sql,chapters/ch10.sql
+10,2,2569,Primary keys,SELECT COUNT(*) AS row_count,worked-or-practice-sql,chapters/ch10.sql
+10,3,2576,Primary keys,SELECT COUNT(*) AS row_count,worked-or-practice-sql,chapters/ch10.sql
+10,4,2588,Foreign keys,orders.customer_id -> customers.customer_id,syntax-fragment,chapters/ch10.sql
+10,5,2594,Foreign keys,orders.branch_id -> branches.branch_id,syntax-fragment,chapters/ch10.sql
+10,6,2600,Foreign keys,orders.employee_id -> employees.employee_id,syntax-fragment,chapters/ch10.sql
+10,7,2611,Optional foreign keys,"SELECT order_id, order_number",worked-or-practice-sql,chapters/ch10.sql
+10,8,2634,Composite keys,"PRIMARY KEY (supplier_id, product_id)",syntax-fragment,chapters/ch10.sql
+10,9,2676,Worked Example: inspect a relationship chain,SELECT,worked-or-practice-sql,chapters/ch10.sql
+10,10,2702,Worked Example: inspect a relationship chain,"SELECT order_id, order_number",worked-or-practice-sql,chapters/ch10.sql
+10,11,2713,Hands-on Lab: measure relationship cardinality before joining,SELECT,worked-or-practice-sql,chapters/ch10.sql
+10,12,2728,Hands-on Lab: measure relationship cardinality before joining,SELECT,worked-or-practice-sql,chapters/ch10.sql
+10,13,2743,Hands-on Lab: measure relationship cardinality before joining,SELECT,worked-or-practice-sql,chapters/ch10.sql
+10,14,2778,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch10.sql
+10,15,2787,Explained Solutions,"SELECT supplier_id, product_id",worked-or-practice-sql,chapters/ch10.sql
+10,16,2795,Explained Solutions,"SELECT order_id, order_number",worked-or-practice-sql,chapters/ch10.sql
+11,1,2840,INNER JOIN,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,2,2859,LEFT JOIN,"SELECT c.customer_id, c.customer_name, o.order_number",worked-or-practice-sql,chapters/ch11.sql
+11,3,2889,Why row counts multiply,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,4,2910,The classic payment-multiplication error,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,5,2935,Repairing the grain,WITH line_totals AS (,worked-or-practice-sql,chapters/ch11.sql
+11,6,2979,RIGHT and FULL joins,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,7,3004,Worked Example: completed order value by branch,WITH line_totals AS (,worked-or-practice-sql,chapters/ch11.sql
+11,8,3048,Worked Example: completed order value by branch,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,9,3061,Hands-on Lab: prove and repair a fanout defect,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,10,3073,Hands-on Lab: prove and repair a fanout defect,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,11,3089,Hands-on Lab: prove and repair a fanout defect,WITH order_values AS (,worked-or-practice-sql,chapters/ch11.sql
+11,12,3136,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch11.sql
+11,13,3151,Explained Solutions,WITH line_totals AS (,worked-or-practice-sql,chapters/ch11.sql
+12,1,3206,IN with a subquery,"SELECT order_number, order_date",worked-or-practice-sql,chapters/ch12.sql
+12,2,3224,EXISTS asks whether a related row exists,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch12.sql
+12,3,3245,NOT EXISTS expresses absence safely,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch12.sql
+12,4,3266,Correlated subqueries,"SELECT o.order_number, o.order_date",worked-or-practice-sql,chapters/ch12.sql
+12,5,3284,Why NOT EXISTS is safer than NOT IN for nullable subquery outputs,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch12.sql
+12,6,3295,Why NOT EXISTS is safer than NOT IN for nullable subquery outputs,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch12.sql
+12,7,3307,Worked Example: active products with no preferred supplier,"SELECT p.product_id, p.product_name, p.sku",worked-or-practice-sql,chapters/ch12.sql
+12,8,3331,Hands-on Lab: prove EXISTS and JOIN formulations agree,"SELECT DISTINCT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch12.sql
+12,9,3341,Hands-on Lab: prove EXISTS and JOIN formulations agree,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch12.sql
+12,10,3354,Hands-on Lab: prove EXISTS and JOIN formulations agree,SELECT COUNT(*) AS join_count,worked-or-practice-sql,chapters/ch12.sql
+12,11,3360,Hands-on Lab: prove EXISTS and JOIN formulations agree,SELECT COUNT(*) AS exists_count,worked-or-practice-sql,chapters/ch12.sql
+12,12,3401,Explained Solutions,"SELECT p.product_id, p.product_name",worked-or-practice-sql,chapters/ch12.sql
+12,13,3414,Explained Solutions,"SELECT s.supplier_id, s.supplier_name",worked-or-practice-sql,chapters/ch12.sql
+12,14,3427,Explained Solutions,SELECT o.order_id,worked-or-practice-sql,chapters/ch12.sql
+13,1,3481,UNION: combine and remove duplicates,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,2,3489,UNION: combine and remove duplicates,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,3,3501,UNION ALL: preserve duplicates,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,4,3518,INTERSECT: values present in both result sets,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,5,3531,EXCEPT: values in the first set but not the second,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,6,3544,Column compatibility,SELECT customer_id AS entity_id,worked-or-practice-sql,chapters/ch13.sql
+13,7,3561,ORDER BY after a set operation,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,8,3585,Worked Example: customer and supplier locations,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,9,3602,Hands-on Lab: distinguish set semantics from bag semantics,SELECT state,worked-or-practice-sql,chapters/ch13.sql
+13,10,3610,Hands-on Lab: distinguish set semantics from bag semantics,SELECT state,worked-or-practice-sql,chapters/ch13.sql
+13,11,3652,Explained Solutions,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,12,3661,Explained Solutions,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+13,13,3670,Explained Solutions,SELECT city,worked-or-practice-sql,chapters/ch13.sql
+14,1,3715,Named intermediate stages,"WITH january_orders AS (",worked-or-practice-sql,chapters/ch14.sql
+14,2,3733,Multiple CTEs,"WITH completed_orders AS (",worked-or-practice-sql,chapters/ch14.sql
+14,3,3756,CTEs for grain control,"WITH line_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+14,4,3792,Recursive CTEs,"WITH RECURSIVE countdown(n) AS (",worked-or-practice-sql,chapters/ch14.sql
+14,5,3825,Worked Example: monthly completed order value,"WITH line_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+14,6,3872,Hands-on Lab: validate CTE stages independently,"WITH line_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+14,7,3882,Hands-on Lab: validate CTE stages independently,"WITH line_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+14,8,3912,Practice Tasks,"WITH movement_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+14,9,3930,Explained Solutions,"WITH movement_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+14,10,3946,Explained Solutions,"WITH line_totals AS (",worked-or-practice-sql,chapters/ch14.sql
+15,1,4005,Window versus GROUP BY,SELECT,worked-or-practice-sql,chapters/ch15.sql
+15,2,4020,Ranking functions,SELECT,worked-or-practice-sql,chapters/ch15.sql
+15,3,4047,Running totals,SELECT,worked-or-practice-sql,chapters/ch15.sql
+15,4,4072,Running totals,SELECT,worked-or-practice-sql,chapters/ch15.sql
+15,5,4100,LAG and LEAD,WITH monthly AS (,worked-or-practice-sql,chapters/ch15.sql
+15,6,4128,Worked Example: ranking products within category,WITH product_sales AS (,worked-or-practice-sql,chapters/ch15.sql
+15,7,4168,Hands-on Lab: reconcile a window calculation,WITH base AS (,worked-or-practice-sql,chapters/ch15.sql
+15,8,4188,Hands-on Lab: reconcile a window calculation,WITH ordered AS (,worked-or-practice-sql,chapters/ch15.sql
+15,9,4244,Explained Solutions,SELECT,worked-or-practice-sql,chapters/ch15.sql
+15,10,4263,Explained Solutions,WITH order_values AS (,worked-or-practice-sql,chapters/ch15.sql
+16,1,4326,Choosing data types,CREATE TABLE price_examples (,worked-or-practice-sql,chapters/ch16.sql
+16,2,4340,Identity columns,CREATE TABLE branch_notes (,worked-or-practice-sql,chapters/ch16.sql
+16,3,4353,NOT NULL,customer_name text NOT NULL,syntax-fragment,chapters/ch16.sql
+16,4,4362,UNIQUE,order_number text NOT NULL UNIQUE,syntax-fragment,chapters/ch16.sql
+16,5,4371,CHECK,quantity integer NOT NULL CHECK (quantity > 0),syntax-fragment,chapters/ch16.sql
+16,6,4377,CHECK,discount_amount numeric(12,2) NOT NULL DEFAULT 0,syntax-fragment,chapters/ch16.sql
+16,7,4393,Foreign keys,"branch_id integer NOT NULL REFERENCES branches(branch_id)",syntax-fragment,chapters/ch16.sql
+16,8,4403,Worked Example: a constrained stock-count table,CREATE TABLE stock_counts (,worked-or-practice-sql,chapters/ch16.sql
+16,9,4442,Hands-on Lab: let PostgreSQL reject bad data,CREATE TEMP TABLE constraint_lab (,transactional-teaching-lab,chapters/ch16.sql
+16,10,4458,Hands-on Lab: let PostgreSQL reject bad data,"INSERT INTO constraint_lab (item_name, quantity, unit_price)",transactional-teaching-lab,chapters/ch16.sql
+16,11,4470,Hands-on Lab: let PostgreSQL reject bad data,"INSERT INTO constraint_lab (item_name, quantity, unit_price)",transactional-teaching-lab,chapters/ch16.sql
+16,12,4481,Hands-on Lab: let PostgreSQL reject bad data,"INSERT INTO constraint_lab (item_name, quantity, unit_price)",transactional-teaching-lab,chapters/ch16.sql
+16,13,4494,Hands-on Lab: let PostgreSQL reject bad data,"INSERT INTO constraint_lab (item_name, quantity, unit_price)",transactional-teaching-lab,chapters/ch16.sql
+16,14,4538,Explained Solutions,CREATE TABLE warehouses (,worked-or-practice-sql,chapters/ch16.sql
+16,15,4554,Explained Solutions,ALTER TABLE warehouses,worked-or-practice-sql,chapters/ch16.sql
+17,1,4605,INSERT with explicit columns,"INSERT INTO customers (customer_name, customer_type, city, state, phone, email)",worked-or-practice-sql,chapters/ch17.sql
+17,2,4624,INSERT with explicit columns,"INSERT INTO categories (category_name)",worked-or-practice-sql,chapters/ch17.sql
+17,3,4632,INSERT with explicit columns,"INSERT INTO categories (category_id, category_name)",worked-or-practice-sql,chapters/ch17.sql
+17,4,4643,RETURNING turns a write into evidence,"INSERT INTO customers (customer_name, customer_type, city, state)",worked-or-practice-sql,chapters/ch17.sql
+17,5,4663,Safe UPDATE: SELECT first,SELECT customer_id, customer_name, is_active,worked-or-practice-sql,chapters/ch17.sql
+17,6,4670,Safe UPDATE: SELECT first,UPDATE customers,worked-or-practice-sql,chapters/ch17.sql
+17,7,4679,Safe UPDATE: SELECT first,UPDATE customers,worked-or-practice-sql,chapters/ch17.sql
+17,8,4697,Updates need the same discipline,"SELECT customer_id, customer_name, is_active",worked-or-practice-sql,chapters/ch17.sql
+17,9,4706,Updates need the same discipline,UPDATE customer_status_practice,worked-or-practice-sql,chapters/ch17.sql
+17,10,4977,The dangerous unrestricted UPDATE,UPDATE customer_status_practice,worked-or-practice-sql,chapters/ch17.sql
+17,11,4992,DELETE uses the same preview discipline,"SELECT customer_id, customer_name",worked-or-practice-sql,chapters/ch17.sql
+17,12,5000,DELETE uses the same preview discipline,DELETE FROM customer_status_practice,worked-or-practice-sql,chapters/ch17.sql
+17,13,5012,Worked Example inside a transaction,BEGIN;,transactional-teaching-lab,chapters/ch17.sql
+17,14,5063,"Hands-on Lab: preview, modify, and receive a receipt",BEGIN;,transactional-teaching-lab,chapters/ch17.sql
+17,15,5112,Practice Tasks,UPDATE orders,worked-or-practice-sql,chapters/ch17.sql
+18,1,5164,"BEGIN, COMMIT, and ROLLBACK",BEGIN;,transactional-teaching-lab,chapters/ch18.sql
+18,2,5170,"BEGIN, COMMIT, and ROLLBACK",COMMIT;,worked-or-practice-sql,chapters/ch18.sql
+18,3,5176,"BEGIN, COMMIT, and ROLLBACK",ROLLBACK;,transactional-teaching-lab,chapters/ch18.sql
+18,4,5191,Atomicity: all or none of the unit,BEGIN;,transactional-teaching-lab,chapters/ch18.sql
+18,5,5246,A two-session thought experiment,BEGIN;,transactional-teaching-lab,chapters/ch18.sql
+18,6,5256,A two-session thought experiment,"SELECT order_id, order_status",worked-or-practice-sql,chapters/ch18.sql
+18,7,5274,Lost-update reasoning,UPDATE inventory_balance_practice,worked-or-practice-sql,chapters/ch18.sql
+18,8,5286,Savepoints,BEGIN;,deliberately-incorrect-or-warning,chapters/ch18.sql
+18,9,5308,Worked Example: verify before commit,BEGIN;,transactional-teaching-lab,chapters/ch18.sql
+20,1,5691,Views: a reusable query interface,CREATE VIEW active_products_view AS,worked-or-practice-sql,chapters/ch20.sql
+20,2,5706,Views: a reusable query interface,"SELECT product_id, product_name, unit_price",worked-or-practice-sql,chapters/ch20.sql
+20,3,5727,A more useful reporting view,CREATE VIEW completed_order_totals AS,worked-or-practice-sql,chapters/ch20.sql
+20,4,5760,Indexes: an alternate access path,CREATE INDEX idx_orders_branch_date,worked-or-practice-sql,chapters/ch20.sql
+20,5,5784,EXPLAIN: inspect the planned strategy,EXPLAIN,worked-or-practice-sql,chapters/ch20.sql
+20,6,5812,EXPLAIN ANALYZE executes the statement,EXPLAIN ANALYZE,worked-or-practice-sql,chapters/ch20.sql
+20,7,5828,Worked Example: index investigation,SELECT,worked-or-practice-sql,chapters/ch20.sql
+20,8,5843,Worked Example: index investigation,CREATE INDEX idx_orders_branch_date,worked-or-practice-sql,chapters/ch20.sql
+20,9,5866,Materialized views,CREATE MATERIALIZED VIEW monthly_branch_summary AS,worked-or-practice-sql,chapters/ch20.sql
+20,10,5879,Materialized views,REFRESH MATERIALIZED VIEW monthly_branch_summary;,worked-or-practice-sql,chapters/ch20.sql
+20,11,5889,Hands-on Lab: compare plans without inventing performance claims,EXPLAIN,worked-or-practice-sql,chapters/ch20.sql
+20,12,5938,Explained Solutions,CREATE INDEX idx_payments_order_status_date,worked-or-practice-sql,chapters/ch20.sql
+21,1,6065,Least privilege,CREATE ROLE marketledger_reporter LOGIN;,worked-or-practice-sql,chapters/ch21.sql
+21,2,6138,Worked Example: secure order search design,SELECT,worked-or-practice-sql,chapters/ch21.sql
+22,1,6277,Reusable order-total CTE,WITH order_totals AS (,worked-or-practice-sql,chapters/ch22.sql
+22,2,6307,Question 1 — Which branch had the highest completed order value?,WITH order_totals AS (,worked-or-practice-sql,chapters/ch22.sql
+22,3,6347,Question 2 — Which branch was “best” in Q1?,AND o.order_date >= DATE '2025-01-01',worked-or-practice-sql,chapters/ch22.sql
+22,4,6356,Question 3 — Which customers generated the highest completed-order value?,WITH order_totals AS (,worked-or-practice-sql,chapters/ch22.sql
+22,5,6383,Question 4 — Which stored customers have no orders at all?,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch22.sql
+22,6,6398,Question 5 — Which products sold the most units on completed orders?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,7,6415,Question 6 — Which categories had the highest completed line value?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,8,6434,Question 7 — What were payment outcomes?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,9,6454,Question 8 — Which orders had a failed payment attempt but later succeeded?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,10,6477,Question 9 — Which orders have no successful payment?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,11,6495,Question 10 — What is the delivery-status distribution?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,12,6510,Question 11 — Which completed deliveries took the most calendar days?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,13,6528,Question 12 — What returns have been completed?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,14,6548,Question 13 — What is current recorded stock by branch and product?,SELECT,worked-or-practice-sql,chapters/ch22.sql
+22,15,6568,Question 14 — Which recorded branch-product quantities are at or below the product reorder level?,WITH stock_position AS (,worked-or-practice-sql,chapters/ch22.sql
+22,16,6593,Question 15 — Rank products by units sold within each category,WITH product_sales AS (,worked-or-practice-sql,chapters/ch22.sql
+22,17,6621,Question 16 — How did completed-order value change month by month?,WITH order_totals AS (,worked-or-practice-sql,chapters/ch22.sql
+22,18,6662,Question 17 — Which active products have no preferred supplier?,"SELECT p.product_id, p.product_name",worked-or-practice-sql,chapters/ch22.sql
+23,1,6810,Capstone A — School Fees,CREATE TABLE students (,supplementary-mini-domain,chapters/ch23.sql
+23,2,6856,Capstone A — School Fees,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,3,6871,Capstone A — School Fees,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,4,6891,Capstone A — School Fees,WITH invoice_payments AS (,supplementary-mini-domain,chapters/ch23.sql
+23,5,6919,Capstone A — School Fees,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,6,6953,Capstone A — School Fees,WITH invoice_payments AS (,supplementary-mini-domain,chapters/ch23.sql
+23,7,6989,Capstone B — Logistics,CREATE TABLE drivers (,supplementary-mini-domain,chapters/ch23.sql
+23,8,7033,Capstone B — Logistics,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,9,7054,Capstone B — Logistics,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,10,7065,Capstone B — Logistics,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,11,7077,Capstone B — Logistics,"SELECT ld.delivery_id, ld.delivery_status",supplementary-mini-domain,chapters/ch23.sql
+23,12,7092,Capstone B — Logistics,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,13,7109,Capstone B — Logistics,SELECT,supplementary-mini-domain,chapters/ch23.sql
+23,14,7126,Capstone B — Logistics,WITH driver_completions AS (,supplementary-mini-domain,chapters/ch23.sql
+24,1,7384,Organising chapter SQL,-- Question: Which active products are priced between 3000 and 10000?,worked-or-practice-sql,chapters/ch24.sql
+24,2,7410,Integrity tests,SELECT oi.*,worked-or-practice-sql,chapters/ch24.sql
+24,3,7421,Integrity tests,SELECT order_item_id,worked-or-practice-sql,chapters/ch24.sql
+24,4,7486,SQL interview reasoning,"SELECT c.customer_id, c.customer_name",worked-or-practice-sql,chapters/ch24.sql
+24,5,7512,SQL interview reasoning,SELECT,worked-or-practice-sql,chapters/ch24.sql
+24,6,7796,Basic retrieval,"SELECT column_a, column_b",worked-or-practice-sql,chapters/ch24.sql
+24,7,7803,Filtering,"SELECT column_a, column_b",worked-or-practice-sql,chapters/ch24.sql
+24,8,7811,Filtering,column_a = value,worked-or-practice-sql,chapters/ch24.sql
+24,9,7823,Sorting and limiting,"SELECT column_a, column_b",worked-or-practice-sql,chapters/ch24.sql
+24,10,7834,Expressions and CASE,SELECT,worked-or-practice-sql,chapters/ch24.sql
+24,11,7847,Aggregation,SELECT,worked-or-practice-sql,chapters/ch24.sql
+24,12,7861,Inner join,"SELECT a.column_a, b.column_b",worked-or-practice-sql,chapters/ch24.sql
+24,13,7870,Left join,"SELECT a.column_a, b.column_b",worked-or-practice-sql,chapters/ch24.sql
+24,14,7881,EXISTS,SELECT a.id,worked-or-practice-sql,chapters/ch24.sql
+24,15,7893,NOT EXISTS,SELECT a.id,worked-or-practice-sql,chapters/ch24.sql
+24,16,7905,Set operations,query_1,worked-or-practice-sql,chapters/ch24.sql
+24,17,7915,CTE,WITH stage_one AS (,worked-or-practice-sql,chapters/ch24.sql
+24,18,7929,Window function,SELECT,worked-or-practice-sql,chapters/ch24.sql
+24,19,7942,Safe update workflow,"SELECT id, current_value",worked-or-practice-sql,chapters/ch24.sql
+24,20,7950,Safe update workflow,UPDATE table_name,worked-or-practice-sql,chapters/ch24.sql
+24,21,7959,Transaction,BEGIN;,transactional-teaching-lab,chapters/ch24.sql
+24,22,7969,Transaction,ROLLBACK;,transactional-teaching-lab,chapters/ch24.sql
+24,23,7975,Table definition,CREATE TABLE example (,worked-or-practice-sql,chapters/ch24.sql
+24,24,7986,Plan inspection,EXPLAIN,worked-or-practice-sql,chapters/ch24.sql
+24,25,7993,Plan inspection,EXPLAIN ANALYZE,worked-or-practice-sql,chapters/ch24.sql
+24,26,8029,First verification sequence,SELECT version();,worked-or-practice-sql,chapters/ch24.sql
+24,27,8035,First verification sequence,CREATE DATABASE marketledger;,worked-or-practice-sql,chapters/ch24.sql
+24,28,8060,First verification sequence,SELECT COUNT(*) AS branch_count,worked-or-practice-sql,chapters/ch24.sql
+24,29,8437,A `LEFT JOIN` behaves like an inner join,LEFT JOIN payments AS p,worked-or-practice-sql,chapters/ch24.sql
+24,30,8457,A running total looks wrong on tied dates,ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW,worked-or-practice-sql,chapters/ch24.sql

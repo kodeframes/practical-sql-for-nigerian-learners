@@ -1,0 +1,13 @@
+order_id,order_number,branch_id,customer_id,employee_id,order_date,sales_channel,order_status,discount_amount,notes
+1,ML-2026-0001,1,1,1,2026-01-05,web,completed,500,
+2,ML-2026-0002,1,,2,2026-01-06,walk_in,completed,0,Anonymous walk-in
+3,ML-2026-0003,2,2,3,2026-01-08,phone,completed,0,
+4,ML-2026-0004,3,3,4,2026-01-12,business,completed,1000,
+5,ML-2026-0005,4,4,5,2026-01-15,web,cancelled,0,
+6,ML-2026-0006,5,5,6,2026-01-18,business,completed,250,
+7,ML-2026-0007,6,6,7,2026-02-02,web,pending,0,
+8,ML-2026-0008,1,7,1,2026-02-05,phone,completed,0,
+9,ML-2026-0009,2,8,3,2026-02-10,business,completed,1500,School supply order
+10,ML-2026-0010,5,9,6,2026-02-14,walk_in,completed,0,
+11,ML-2026-0011,3,1,4,2026-03-01,web,completed,0,
+12,ML-2026-0012,6,6,7,2026-03-03,web,completed,300,

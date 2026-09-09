@@ -1,0 +1,3 @@
+return_id,order_item_id,return_date,quantity,reason,return_status,refund_amount
+1,22,2026-03-06,1,One bulb damaged on arrival,completed,1100
+2,16,2026-02-18,2,Unopened surplus paper,approved,15000

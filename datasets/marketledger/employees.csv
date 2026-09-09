@@ -1,0 +1,9 @@
+employee_id,branch_id,first_name,last_name,job_title,hire_date,email,is_active
+1,1,Adaeze,Okafor,Sales Officer,2021-02-01,adaeze.okafor@example.invalid,1
+2,1,Tunde,Bakare,Branch Supervisor,2019-06-17,tunde.bakare@example.invalid,1
+3,2,Amina,Yusuf,Sales Officer,2022-03-14,amina.yusuf@example.invalid,1
+4,3,Kunle,Adebayo,Sales Officer,2020-09-07,kunle.adebayo@example.invalid,1
+5,4,Chiamaka,Eze,Sales Officer,2023-01-09,chiamaka.eze@example.invalid,1
+6,5,Bashir,Lawal,Branch Supervisor,2022-08-22,bashir.lawal@example.invalid,1
+7,6,Ibiye,George,Sales Officer,2024-02-05,,1
+8,2,Mariam,Bello,Accounts Officer,2021-11-15,mariam.bello@example.invalid,0
