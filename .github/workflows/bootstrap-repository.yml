@@ -1,86 +1,13 @@
 name: Bootstrap verified companion repository
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - .github/workflows/bootstrap-repository.yml
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  issues: write
+  contents: read
 
 jobs:
-  bootstrap:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out bootstrap branch
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Reconstruct verified repository payload
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          ids=(5604224489 5604255718 5604289003 5604322587 5604356268 5604361650 5604383904 5604392949 5604401612 5604410151 5604419333)
-          expected=(
-            d7ccc23cad344a9f9b98f1fbcb46964539d61e72db23838991ad6d701014933d
-            ef00ebbbd4683b564042b4c5d028e001c983ddd01a1cd64b48a2e5244b136134
-            471a86bbd459ca03f0eabf150fac848870edf625d1bcf00e9ce3071e93d84238
-            c333897ac5ac4e03be4108b60224a0a142494827d32c21d912c3b2b15ae1aeb6
-            129e241f650ddd67a16f97f7a2f3e1b682c87dd82b6414a371576abb393e62ab
-            41ea28a1e569a9aa2fd8157b587cf5aa936901a64d7b516efccb2e628c07dc95
-            bf986059ab540d98500707884636f1c9a64bc7046770b619996cec40f76199f5
-            d47d73d77ad912356e5cc244da039547ea42ea185c12d5fb58f1678a8880b84f
-            0e5287f1e2787c0a4907fe7650aa2720860fbb801d5224b2ec31051fabf92901
-            1de3467cdcf8cadbae41ad6eabf05fe4b6c14ed29e5fc416bd4341217b5ce858
-            eb6bced0309697568dcf7436a626cf3578fbe2a902a5e1628aaed30d1f120cb1
-          )
-          : > /tmp/repository.tar.gz.b64.clean
-          for i in "${!ids[@]}"; do
-            id="${ids[$i]}"
-            gh api "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" --jq '.body' | tr -d '\r\n' > /tmp/chunk
-            actual="$(sha256sum /tmp/chunk | cut -d' ' -f1)"
-            bytes="$(wc -c < /tmp/chunk | tr -d ' ')"
-            echo "chunk=$((i+1)) id=${id} bytes=${bytes} sha256=${actual}"
-            test "${actual}" = "${expected[$i]}"
-            cat /tmp/chunk >> /tmp/repository.tar.gz.b64.clean
-          done
-          base64 --decode /tmp/repository.tar.gz.b64.clean > /tmp/repository.tar.gz
-          echo '6c69b73fe7135ca269016aa6c5404ebd150f9d29a433f7ff7f7f38623191a32b  /tmp/repository.tar.gz' | sha256sum --check --strict
-          tar -tzf /tmp/repository.tar.gz >/dev/null
-          tar -xzf /tmp/repository.tar.gz -C .
-          test -f LICENSE
-          test -f database/postgresql/schema/001_marketledger_schema.sql
-          test -f database/postgresql/seed/001_marketledger_seed.sql
-          test -f chapters/ch24.sql
-          test -f tests/regression/008_transaction_rollback.sql
-          test -f docs/quality/postgresql18-verification-2026-09-09.md
-          test -f .github/workflows/postgresql18-verify.yml
-
-      - name: Commit verified repository baseline
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -f .github/workflows/bootstrap-repository.yml
-          git config user.name 'KodeFrames Repository Bootstrap'
-          git config user.email 'kodeframes@gmail.com'
-          git add -A
-          git diff --cached --check
-          git commit -m 'Populate PostgreSQL 18 verified companion repository'
-          git push origin HEAD:main
-
-      - name: Sanitize temporary transport issue
-        if: success()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/1/comments" --jq '.[].id' | while read -r id; do
-            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" -f body="Consumed private bootstrap payload chunk." >/dev/null
-          done
-          gh issue close 1 --repo "${GITHUB_REPOSITORY}" --comment 'Verified companion-repository bootstrap completed and transport payload sanitized.'
+      - run: echo 'Bootstrap transport workflow retired; repository population is handled directly through Git data APIs.'
