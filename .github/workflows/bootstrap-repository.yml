@@ -28,22 +28,22 @@ jobs:
           : > /tmp/repository.tar.gz.b64
           for id in \
             5604224489 \
-            5604356268 \
             5604255718 \
             5604289003 \
             5604322587 \
+            5604356268 \
+            5604361650 \
             5604383904 \
             5604392949 \
             5604401612 \
             5604410151 \
-            5604419333 \
-            5604361650
+            5604419333
           do
             gh api "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" --jq '.body' >> /tmp/repository.tar.gz.b64
           done
           tr -d '\r\n' < /tmp/repository.tar.gz.b64 > /tmp/repository.tar.gz.b64.clean
           base64 --decode /tmp/repository.tar.gz.b64.clean > /tmp/repository.tar.gz
-          echo 'a7198f8c18ac4bb8229712f4b0152a1412e8bd9e6033372659bf04d4f7049e3f  /tmp/repository.tar.gz' | sha256sum --check --strict
+          echo '6c69b73fe7135ca269016aa6c5404ebd150f9d29a433f7ff7f7f38623191a32b  /tmp/repository.tar.gz' | sha256sum --check --strict
           tar -tzf /tmp/repository.tar.gz >/dev/null
           tar -xzf /tmp/repository.tar.gz -C .
           test -f LICENSE
