@@ -13,7 +13,7 @@
 - GitHub Actions verification run: `34383303837`
 - Live verification date: 2026-09-09
 - Manuscript baseline: reconstructed v1.1
-- Publication-aligned manuscript: v1.2
+- Publication-aligned manuscript: v1.3
 - Print target: 7 x 10 in, no-bleed technical interior
 - Kindle target: reflowable eBook
 - Canonical chapter scripts: `chapters/ch01.sql` through `chapters/ch24.sql`
@@ -26,4 +26,4 @@ The commit SHA above is the executable source of truth for the first publication
 
 ## Rights boundary
 
-Repository software is distributed under the MIT License. Publication prose and substantial editorial material remain subject to `CONTENT-LICENSE.md`. Synthetic dataset licensing remains governed by `DATA-LICENSE.md`; its current status must not be overstated in the book or repository metadata.
+Repository software is distributed under the MIT License. Publication prose and substantial editorial material remain subject to `CONTENT-LICENSE.md`. The MarketLedger synthetic dataset is licensed under CC BY 4.0 as recorded in `DATA-LICENSE.md`.
