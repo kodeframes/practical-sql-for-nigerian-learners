@@ -1,0 +1,81 @@
+name: Bootstrap verified companion repository
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/bootstrap-repository.yml
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out bootstrap branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct verified repository payload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > /tmp/repository.tar.gz.b64
+          for id in \
+            5604224489 \
+            5604240217 \
+            5604255718 \
+            5604289003 \
+            5604322587 \
+            5604383904 \
+            5604392949 \
+            5604401612 \
+            5604410151 \
+            5604419333 \
+            5604361650
+          do
+            gh api "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" --jq '.body' >> /tmp/repository.tar.gz.b64
+          done
+          tr -d '\r\n' < /tmp/repository.tar.gz.b64 > /tmp/repository.tar.gz.b64.clean
+          base64 --decode /tmp/repository.tar.gz.b64.clean > /tmp/repository.tar.gz
+          echo 'a7198f8c18ac4bb8229712f4b0152a1412e8bd9e6033372659bf04d4f7049e3f  /tmp/repository.tar.gz' | sha256sum --check --strict
+          tar -tzf /tmp/repository.tar.gz >/dev/null
+          tar -xzf /tmp/repository.tar.gz -C .
+          test -f LICENSE
+          test -f database/postgresql/schema/001_marketledger_schema.sql
+          test -f database/postgresql/seed/001_marketledger_seed.sql
+          test -f chapters/ch24.sql
+          test -f tests/regression/008_transaction_rollback.sql
+          test -f docs/quality/postgresql18-verification-2026-09-09.md
+          test -f .github/workflows/postgresql18-verify.yml
+
+      - name: Commit verified repository baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/bootstrap-repository.yml
+          git config user.name 'KodeFrames Repository Bootstrap'
+          git config user.email 'kodeframes@gmail.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'Populate PostgreSQL 18 verified companion repository'
+          git push origin HEAD:main
+
+      - name: Sanitize temporary transport issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          n=0
+          gh api --paginate "repos/${GITHUB_REPOSITORY}/issues/1/comments" --jq '.[].id' | while read -r id; do
+            n=$((n + 1))
+            gh api --method PATCH "repos/${GITHUB_REPOSITORY}/issues/comments/${id}" -f body="Consumed private bootstrap payload chunk." >/dev/null
+          done
+          gh issue close 1 --repo "${GITHUB_REPOSITORY}" --comment 'Verified companion-repository bootstrap completed and transport payload sanitized.'
